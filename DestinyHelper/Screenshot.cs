@@ -22,7 +22,14 @@ namespace DestinyHelper
         }
 
         [DllImport("user32.dll")]
-        static extern IntPtr GetForegroundWindow();
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+        [DllImport("user32.dll")]
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
 
         [DllImport("user32.dll")]
         static extern bool GetWindowRect(IntPtr hWnd, out RECT rect);
@@ -72,18 +79,14 @@ namespace DestinyHelper
                 {
                     graphics.CopyFromScreen(windowRect.Left, windowRect.Top, 0, 0, new System.Drawing.Size(width, height));
                 }
-
-                return screenshot;
+                    return screenshot;
             }
-
             return null;
         }
 
         static Mat ConvertBitmapToMat(Bitmap bitmap)
         {
-            Mat matImage = OpenCvSharp.Extensions.BitmapConverter.ToMat(bitmap);
-
-            return matImage;
+            return OpenCvSharp.Extensions.BitmapConverter.ToMat(bitmap);
         }
     }
 }

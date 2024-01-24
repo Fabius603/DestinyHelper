@@ -9,6 +9,8 @@ namespace DestinyHelper
 {
     public class Video
     {
+        public static bool HandleResultTaskIsRunning = false;
+
         public static void PlayVideo()
         {
             Settings settings = new Settings();
@@ -18,11 +20,20 @@ namespace DestinyHelper
                 Mat screenshot = Screenshot.GetScreenshot();
                 if (screenshot != null)
                 {
-                    screenshot = AutoFisher.Run(screenshot);
-                    BildAnzeigen(screenshot, settings);
+                    MatcherResults matcherResults = AutoFisher.Run(screenshot, settings);
+
+                    if(!Video.HandleResultTaskIsRunning && matcherResults.Success)
+                    {
+                        Video.HandleResultTaskIsRunning = true;
+                        Task HandleResultTask = new Task(() => AutoFisher.HandleResults(matcherResults));
+                        HandleResultTask.Start();
+                    } 
+
+                    BildAnzeigen(matcherResults.img, settings);
 
                     // Bilder aus Arbeitsspeicher löschen --!! SEHR WICHTIG !!--
                     screenshot.Dispose();
+                    GC.Collect();
                 }
             }
             Cv2.DestroyAllWindows();

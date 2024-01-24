@@ -13,9 +13,10 @@ namespace DestinyHelper
     {
         // Spielgröße geteilt durch die Werte ergibt das ROI 
         public ROI ROI_Factors {  get; set; }
-
         public int AnzeigHöhe = 600;
         public int AnzeigBreite = 800;
+
+        public bool AutoFisherStatus;
     }
 
     public class ROI

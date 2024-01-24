@@ -39,7 +39,6 @@ namespace DestinyHelper
         {
             Task PlayVideoTask = new Task(Video.PlayVideo);
             PlayVideoTask.Start();
-
         }
     }
 }
