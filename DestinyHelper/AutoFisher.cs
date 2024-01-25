@@ -34,7 +34,7 @@ namespace DestinyHelper
             }
             Rect ROI = GetROI(image, settings);
             image = image.SubMat(ROI);
-            using (Mat trainerImage = new Mat("C:\\Users\\fjsch\\source\\repos\\DestinyHelper\\DestinyHelper\\Bilder\\FisherTrainer2.png"))
+            using (Mat trainerImage = new Mat("Bilder\\FisherTrainer2.png"))
             {
                 MatcherResults matcherResults = BildMatcher.MatchImages(image, trainerImage, ROI);
                 return matcherResults;
@@ -63,7 +63,7 @@ namespace DestinyHelper
             {
                 InputSimulator simulator = new InputSimulator();
 
-                simulator.Keyboard.Sleep(200);
+                simulator.Keyboard.Sleep(120);
                 simulator.Keyboard.KeyDown(WindowsInput.Native.VirtualKeyCode.VK_E);
                 simulator.Keyboard.Sleep(1500);
                 simulator.Keyboard.KeyUp(WindowsInput.Native.VirtualKeyCode.VK_E);

@@ -1,4 +1,6 @@
-﻿using OpenCvSharp;
+﻿using DestinyHelper.MVVM.View;
+using DestinyHelper.MVVM.ViewModel;
+using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace DestinyHelper
         {
             Settings settings = new Settings();
 
-            while (MainWindow.isrunning)
+            while (AutoFisherView.fishingisrunning)
             {
                 Mat screenshot = Screenshot.GetScreenshot();
                 if (screenshot != null)

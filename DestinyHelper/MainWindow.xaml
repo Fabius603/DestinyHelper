@@ -4,9 +4,88 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DestinyHelper"
+        xmlns:viewModel="clr-namespace:DestinyHelper.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Name="btnRun" Content="Start!" HorizontalAlignment="Center" VerticalAlignment="Center" Height="109" Width="128" FontSize="25" Click="btnRun_Click"/>
-    </Grid>
+        Height="700" Width="1100"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
+        Background="Transparent">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
+    <Border Background="#272537">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250">
+                </ColumnDefinition>
+                <ColumnDefinition>
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100">
+                </RowDefinition>
+                <RowDefinition>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Image HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Height="200"
+                   Width="200" 
+                   Source="/Images/logo.png"/>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="23"
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
+
+                <RadioButton Content="Open World"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="23"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding OpenWorldViewCommand}"/>     
+                
+                <RadioButton Content="Macros"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="23"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Settings"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="23"
+                             Name="btnRun"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Raid"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="23"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Open World"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="23"
+                             Style="{StaticResource MenuButtonTheme}"/> 
+
+            </StackPanel>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+
+        </Grid>
+        
+    </Border>
 </Window>
