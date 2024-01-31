@@ -83,17 +83,14 @@ namespace DestinyHelper.Macros
         {
             if (RequiresModifierKey)
             {
-                if (Keyboard.Modifiers != ModifierKeys.None)
+                foreach (GlobalHotkey hotkey in Hotkeys)
                 {
-                    foreach (GlobalHotkey hotkey in Hotkeys)
+                    if (Keyboard.Modifiers == hotkey.Modifier && Keyboard.IsKeyDown(hotkey.Key))
                     {
-                        if (Keyboard.Modifiers == hotkey.Modifier && Keyboard.IsKeyDown(hotkey.Key))
+                        if (hotkey.CanExecute)
                         {
-                            if (hotkey.CanExecute)
-                            {
-                                hotkey.Callback?.Invoke();
-                                HotkeyFired?.Invoke(hotkey);
-                            }
+                            hotkey.Callback?.Invoke();
+                            HotkeyFired?.Invoke(hotkey);
                         }
                     }
                 }

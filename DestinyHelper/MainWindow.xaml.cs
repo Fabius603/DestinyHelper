@@ -22,9 +22,7 @@ namespace DestinyHelper
             InitializeComponent();
 
             HotkeysManager.SetupSystemHook();
-
-            GlobalHotkey newHotkey = new GlobalHotkey(ModifierKeys.Shift, Key.G, MacroExecuter.Execute);
-            HotkeysManager.AddHotkey(newHotkey);
+            MacroManager.ActivateAllHotkeys();
 
             Closing += MainWindow_Closing;
         }

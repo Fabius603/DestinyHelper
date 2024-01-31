@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,8 +14,11 @@ using WindowsInput.Native;
 
 namespace DestinyHelper.Macros
 {
+
     public class MacroExecuter
     {
+        public Dictionary<String, MacroInputs> aktiveMacros { get; set; }
+
         [DllImport("user32.dll")]
         public static extern short VkKeyScan(char ch);
 
@@ -33,26 +37,49 @@ namespace DestinyHelper.Macros
 
         static void PressKeys(MacroInputs macroInputs)
         {
-            if (AutoFisher.GetActiveApplicationName() != "destiny2")
+            if (AutoFisher.GetActiveApplicationName() == "destiny2")
             {
                 InputSimulator simulator = new InputSimulator();
 
-
+                VirtualKeyCode keyCode;
                 for (int i = 0; i < macroInputs.KeyInput.Count; i++)
                 {
-                    VirtualKeyCode keyCode = GetVirtualKeyCode(macroInputs.KeyInput[i][0]);
                     switch (macroInputs.Instruction[i])
                     {
                         case "keydown":
+                            keyCode = ConvertToKeyCode(macroInputs.KeyInput[i]);
                             simulator.Keyboard.KeyDown(keyCode);
                             break;
 
                         case "keyup":
+                            keyCode = ConvertToKeyCode(macroInputs.KeyInput[i]);
                             simulator.Keyboard.KeyUp(keyCode);
                             break;
 
                         case "sleep":
                             simulator.Keyboard.Sleep(Int32.Parse(macroInputs.KeyInput[i]));
+                            break;
+
+                        case "mousedown":
+                            if(macroInputs.KeyInput[i] == "RIGHT")
+                            {
+                                simulator.Mouse.RightButtonDown();
+                            }
+                            else if(macroInputs.KeyInput[i] == "LEFT")
+                            {
+                                simulator.Mouse.LeftButtonDown();
+                            }
+                            break;
+
+                        case "mouseup":
+                            if (macroInputs.KeyInput[i] == "RIGHT")
+                            {
+                                simulator.Mouse.RightButtonUp();
+                            }
+                            else if (macroInputs.KeyInput[i] == "LEFT")
+                            {
+                                simulator.Mouse.LeftButtonUp();
+                            }
                             break;
 
                         default:
@@ -61,6 +88,11 @@ namespace DestinyHelper.Macros
 
                 }
             }
+        }
+
+        public static VirtualKeyCode ConvertToKeyCode(string key)
+        {
+            return (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), key);
         }
 
         static VirtualKeyCode GetVirtualKeyCode(char character)

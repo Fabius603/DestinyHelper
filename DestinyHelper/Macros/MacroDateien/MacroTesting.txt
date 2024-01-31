@@ -1,4 +1,13 @@
-﻿keydown e
-keyup e
-keydown f
-keyup f
+﻿keydown VK_3
+keyup VK_3
+sleep 400
+mousedown RIGHT
+sleep 100
+mouseup RIGHT
+keydown VK_L
+keydown SPACE
+sleep 100
+keyup VK_L
+keyup SPACE
+keydown VK_2
+keyup VK_2
