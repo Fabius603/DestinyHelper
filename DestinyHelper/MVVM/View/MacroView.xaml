@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="DestinyHelper.MVVM.View.MacroView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DestinyHelper.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <Grid Height="450" Width="800">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200">
+                </ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="HunterSkate"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="23"
+                       Foreground="White"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+
+                <ToggleButton Content="Deaktiviert"
+                              x:Name="HunterSkateToggleButton"
+                              Click="ToggleMacro_Click"
+                              Margin="20, 0, 0, 0"
+                              FontSize="15"/>
+
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>

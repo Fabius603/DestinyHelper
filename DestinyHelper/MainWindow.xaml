@@ -57,6 +57,13 @@
                              Height="50"
                              Foreground="White"
                              FontSize="23"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding MacroViewCommand}"/>
+
+                <RadioButton Content="Raid"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="23"
                              Style="{StaticResource MenuButtonTheme}"/>
 
                 <RadioButton Content="Settings"
@@ -65,19 +72,6 @@
                              FontSize="23"
                              Name="btnRun"
                              Style="{StaticResource MenuButtonTheme}"/>
-
-                <RadioButton Content="Raid"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="23"
-                             Style="{StaticResource MenuButtonTheme}"/>
-
-                <RadioButton Content="Open World"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="23"
-                             Style="{StaticResource MenuButtonTheme}"/> 
-
             </StackPanel>
 
             <ContentControl Grid.Row="1"

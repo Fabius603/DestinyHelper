@@ -79,6 +79,11 @@ namespace DestinyHelper.Macros
             Hotkeys.Remove(hotkey);
         }
 
+        public static void RemoveAllHotkeys()
+        {
+            Hotkeys.Clear();
+        }
+
         private static void CheckHotkeys()
         {
             if (RequiresModifierKey)

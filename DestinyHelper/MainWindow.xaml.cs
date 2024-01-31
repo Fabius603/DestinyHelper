@@ -22,7 +22,6 @@ namespace DestinyHelper
             InitializeComponent();
 
             HotkeysManager.SetupSystemHook();
-            MacroManager.ActivateAllHotkeys();
 
             Closing += MainWindow_Closing;
         }

@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DestinyHelper.MVVM.View
 {
-    /// <summary>
-    /// Interaktionslogik für HomeView.xaml
-    /// </summary>
     public partial class HomeView : UserControl
     {
         public HomeView()

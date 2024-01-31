@@ -13,9 +13,12 @@ namespace DestinyHelper.MVVM.ViewModel
 
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand OpenWorldViewCommand { get; set; }
+        public RelayCommand MacroViewCommand { get; set; }
+
 
         public HomeViewModel HomeVm { get; set; }
         public OpenWorldViewModel OpenWorldVm { get; set; }
+        public MacroViewModel MacroVm { get; set; }
 
         private object _currentView;
 
@@ -34,6 +37,7 @@ namespace DestinyHelper.MVVM.ViewModel
         {
             HomeVm = new HomeViewModel();
             OpenWorldVm = new OpenWorldViewModel();
+            MacroVm = new MacroViewModel();
 
             CurrentView = HomeVm;
 
@@ -45,6 +49,11 @@ namespace DestinyHelper.MVVM.ViewModel
             OpenWorldViewCommand = new RelayCommand(o =>
             {
                 CurrentView = OpenWorldVm;
+            });
+
+            MacroViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = MacroVm;
             });
         }
     }

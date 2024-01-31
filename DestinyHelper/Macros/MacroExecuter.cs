@@ -17,20 +17,19 @@ namespace DestinyHelper.Macros
 
     public class MacroExecuter
     {
-        public Dictionary<String, MacroInputs> aktiveMacros { get; set; }
+        public static Dictionary<String, MacroInputs> aktiveMacros = new Dictionary<String, MacroInputs>();
+        public static Dictionary<String, GlobalHotkey> aktiveMacrosList = new Dictionary<String, GlobalHotkey>();
+
 
         [DllImport("user32.dll")]
         public static extern short VkKeyScan(char ch);
 
-        public static void Execute()
+        public static void Execute(string name)
         {
             Thread MacroThread = new Thread(() =>
             {
-                MacroInputs macroInputs = Choose();
-                if (macroInputs != null)
-                {
-                    PressKeys(macroInputs);
-                }
+                MacroInputs macroInputs = aktiveMacros[name];
+                PressKeys(macroInputs);
             });
             MacroThread.Start();
         }
@@ -95,19 +94,7 @@ namespace DestinyHelper.Macros
             return (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), key);
         }
 
-        static VirtualKeyCode GetVirtualKeyCode(char character)
-        {
-            short keyScanResult = VkKeyScan(character);
-            byte keyCode = (byte)(keyScanResult & 0xFF);
-            return (VirtualKeyCode)keyCode;
-        }
-        public static MacroInputs Choose()
-        {
-            MacroInputs macroInputs = ReadFile("MacroTesting");
-            return macroInputs;
-        }
-
-        static MacroInputs ReadFile(string MacroName)
+        public static MacroInputs ReadFile(string MacroName)
         {
             try
             {

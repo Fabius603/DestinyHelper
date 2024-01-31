@@ -19,6 +19,10 @@
                 <view:AutoFisherView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:MacroViewModel}">
+                <view:MacroView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
