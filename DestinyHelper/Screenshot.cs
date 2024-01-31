@@ -49,7 +49,7 @@ namespace DestinyHelper
             }
         }
 
-        static IntPtr FindWindowByProcessName(string processName)
+        public static IntPtr FindWindowByProcessName(string processName)
         {
             IntPtr hWnd = IntPtr.Zero;
             foreach (var process in System.Diagnostics.Process.GetProcessesByName(processName))

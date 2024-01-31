@@ -15,7 +15,7 @@ namespace DestinyHelper
 
     public class AutoFisher
     {
-        static string GetActiveApplicationName()
+        public static string GetActiveApplicationName()
         {
             IntPtr hWnd = Screenshot.GetForegroundWindow();
             uint processId;
