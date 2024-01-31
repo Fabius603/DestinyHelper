@@ -38,7 +38,25 @@
                               Click="ToggleMacro_Click"
                               Margin="20, 0, 0, 0"
                               FontSize="15"/>
+            </StackPanel>
 
+            <TextBlock Text="HunterBodenSkate"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="23"
+                       Foreground="White"
+                       Grid.Row="1"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        VerticalAlignment="Center">
+
+                <ToggleButton Content="Deaktiviert"
+                              x:Name="HunterBodenSkateToggleButton"
+                              Click="ToggleMacro_Click"
+                              Margin="20, 0, 0, 0"
+                              FontSize="15"/>
             </StackPanel>
         </Grid>
     </StackPanel>

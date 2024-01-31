@@ -31,12 +31,12 @@ namespace DestinyHelper.MVVM.View
             string name = MacroManager.NameSubstring(clickedButton.Name);
             if (!MacroExecuter.aktiveMacros.ContainsKey(name))
             {
-                HunterSkateToggleButton.Content = "Aktiviert";
+                clickedButton.Content = "Aktiviert";
                 MacroManager.ActivateHotkey(name);
             }
             else
             {
-                HunterSkateToggleButton.Content = "Deaktiviert";
+                clickedButton.Content = "Deaktiviert";
                 MacroManager.DeactivateHotkey(name);
             }
         }
