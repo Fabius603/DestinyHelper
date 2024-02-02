@@ -12,6 +12,8 @@
     <None Remove="Bilder\FisherTrainer2.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Macros\MacroDateien\HunterBodenSkate.txt" />
+    <None Remove="Macros\MacroDateien\WarlockBodenSkate.txt" />
+    <None Remove="Macros\MacroDateien\WarlockSkate.txt" />
     <None Remove="Macros\MacroTesting.txt" />
   </ItemGroup>
 
@@ -26,6 +28,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Macros\MacroDateien\HunterSkate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Macros\MacroDateien\WarlockBodenSkate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Macros\MacroDateien\WarlockSkate.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

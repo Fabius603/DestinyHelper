@@ -29,15 +29,80 @@ namespace DestinyHelper.MVVM.View
         {
             ToggleButton clickedButton = sender as ToggleButton;
             string name = MacroManager.NameSubstring(clickedButton.Name);
-            if (!MacroExecuter.aktiveMacros.ContainsKey(name))
+            if (!MacroManager.AktiveMacros.ContainsKey(name))
             {
-                clickedButton.Content = "Aktiviert";
                 MacroManager.ActivateHotkey(name);
             }
             else
             {
-                clickedButton.Content = "Deaktiviert";
                 MacroManager.DeactivateHotkey(name);
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (!string.IsNullOrEmpty(textBox.Text))
+            {
+                string newText = char.ToUpper(textBox.Text[0]) + textBox.Text.Substring(1);
+                if (textBox.Text != newText)
+                {
+                    textBox.Text = newText;
+                    textBox.CaretIndex = textBox.Text.Length; // Setzt den Cursor ans Ende des Textes
+                }
+                bool isKey = UpdateMacroBindings(textBox.Name, newText, textBox);
+                if (isKey)
+                {
+                    SolidColorBrush white = new SolidColorBrush(Colors.White);
+                    textBox.Foreground = white;
+                }
+                else
+                {
+                    SolidColorBrush red = new SolidColorBrush(Colors.Red);
+                    textBox.Foreground = red;
+                }
+            }
+        }
+
+        static bool UpdateMacroBindings(string name, string value, TextBox textBox)
+        {
+            Key key = GetEnumValue(value);
+            if (key != 0)
+            {
+                MacroManager.MacroBindings[name] = key;
+                try
+                {
+                    MacroManager.DeactivateHotkey(name);
+                    MacroManager.ActivateHotkey(name);
+                }
+                catch { }
+                return true;
+            }
+            else
+            {
+                try
+                {
+                    MacroManager.DeactivateHotkey(name);
+                }
+                catch { }
+                return false;
+            }
+        }
+
+        public static string GetEnumName(Key enumValue)
+        {
+            return Enum.GetName(typeof(Key), enumValue);
+        }
+
+        public static Key GetEnumValue(string enumName)
+        {
+            try
+            {
+                return (Key)Enum.Parse(typeof(Key), enumName);
+            }
+            catch
+            {
+                return 0;
             }
         }
     }

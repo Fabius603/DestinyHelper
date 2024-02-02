@@ -19,10 +19,8 @@ namespace DestinyHelper
     {
         public MainWindow()
         {
+            StartProject.Start();
             InitializeComponent();
-
-            HotkeysManager.SetupSystemHook();
-
             Closing += MainWindow_Closing;
         }
 

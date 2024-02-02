@@ -17,10 +17,6 @@ namespace DestinyHelper.Macros
 
     public class MacroExecuter
     {
-        public static Dictionary<String, MacroInputs> aktiveMacros = new Dictionary<String, MacroInputs>();
-        public static Dictionary<String, GlobalHotkey> aktiveMacrosList = new Dictionary<String, GlobalHotkey>();
-
-
         [DllImport("user32.dll")]
         public static extern short VkKeyScan(char ch);
 
@@ -28,7 +24,7 @@ namespace DestinyHelper.Macros
         {
             Thread MacroThread = new Thread(() =>
             {
-                MacroInputs macroInputs = aktiveMacros[name];
+                MacroInputs macroInputs = MacroManager.AktiveMacros[name];
                 PressKeys(macroInputs);
             });
             MacroThread.Start();

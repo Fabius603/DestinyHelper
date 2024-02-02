@@ -18,46 +18,136 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200">
+                <ColumnDefinition Width="350">
                 </ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="HunterSkate"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Left"
                        FontSize="23"
+                       Margin="30, 0, 0, 0"
                        Foreground="White"/>
 
-            <StackPanel Orientation="Horizontal"
-                        Grid.Column="1"
-                        VerticalAlignment="Center">
+            <ToggleButton x:Name="HunterSkateToggleButton"
+                          Click="ToggleMacro_Click"
+                          Margin="20, 0, 0, 0"
+                          FontSize="15"
+                          Style="{StaticResource ToggleButtonTheme}"
+                          Height="30"
+                          Width="90"
+                          Grid.Column="1"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"/>
 
-                <ToggleButton Content="Deaktiviert"
-                              x:Name="HunterSkateToggleButton"
-                              Click="ToggleMacro_Click"
-                              Margin="20, 0, 0, 0"
-                              FontSize="15"/>
-            </StackPanel>
+            <TextBox Text="{Binding HunterSkateHotkey}"
+                     Grid.Column="2"
+                     FontSize="30"
+                     TextAlignment="Center"
+                     Background="Transparent"
+                     Height="42"
+                     Foreground="White"
+                     Width="100"
+                     TextChanged="TextBox_TextChanged"
+                     x:Name="HunterSkate"/>
 
             <TextBlock Text="HunterBodenSkate"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       HorizontalAlignment="Left"
                        FontSize="23"
                        Foreground="White"
                        Grid.Row="1"/>
 
-            <StackPanel Orientation="Horizontal"
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        VerticalAlignment="Center">
+            <ToggleButton x:Name="HunterBodenSkateToggleButton"
+                          Click="ToggleMacro_Click"
+                          Margin="20, 0, 0, 0"
+                          FontSize="15"
+                          Style="{StaticResource ToggleButtonTheme}"
+                          Height="30"
+                          Width="90"
+                          Grid.Column="1"
+                          Grid.Row="1"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"/>
 
-                <ToggleButton Content="Deaktiviert"
-                              x:Name="HunterBodenSkateToggleButton"
-                              Click="ToggleMacro_Click"
-                              Margin="20, 0, 0, 0"
-                              FontSize="15"/>
-            </StackPanel>
+            <TextBox Text="{Binding HunterBodenSkateHotkey}"
+                     Grid.Column="2"
+                     Grid.Row="1"
+                     FontSize="30"
+                     TextAlignment="Center"
+                     Background="Transparent"
+                     Height="42"
+                     Foreground="White"
+                     Width="100"
+                     TextChanged="TextBox_TextChanged"
+                     x:Name="HunterBodenSkate"/>
+
+            <TextBlock Text="WarlockSkate"
+                       VerticalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       HorizontalAlignment="Left"
+                       FontSize="23"
+                       Foreground="White"
+                       Grid.Row="2"/>
+
+            <ToggleButton x:Name="WarlockSkateToggleButton"
+                          Click="ToggleMacro_Click"
+                          Margin="20, 0, 0, 0"
+                          FontSize="15"
+                          Style="{StaticResource ToggleButtonTheme}"
+                          Height="30"
+                          Width="90"
+                          Grid.Column="1"
+                          Grid.Row="2"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"/>
+
+            <TextBox Text="{Binding WarlockSkateHotkey}"
+                     Grid.Column="2"
+                     Grid.Row="2"
+                     FontSize="30"
+                     TextAlignment="Center"
+                     Background="Transparent"
+                     Height="42"
+                     Foreground="White"
+                     Width="100"
+                     TextChanged="TextBox_TextChanged"
+                     x:Name="WarlockSkate"/>
+
+            <TextBlock Text="WarlockBodenSkate"
+                       VerticalAlignment="Center"
+                       Margin="30, 0, 0, 0"
+                       HorizontalAlignment="Left"
+                       FontSize="23"
+                       Foreground="White"
+                       Grid.Row="3"/>
+
+            <ToggleButton x:Name="WarlockBodenSkateToggleButton"
+                          Click="ToggleMacro_Click"
+                          Margin="20, 0, 0, 0"
+                          FontSize="15"
+                          Style="{StaticResource ToggleButtonTheme}"
+                          Height="30"
+                          Width="90"
+                          Grid.Column="1"
+                          Grid.Row="3"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"/>
+
+            <TextBox Text="{Binding WarlockBodenSkateHotkey}"
+                     Grid.Column="2"
+                     Grid.Row="3"
+                     FontSize="30"
+                     TextAlignment="Center"
+                     Background="Transparent"
+                     Height="42"
+                     Foreground="White"
+                     Width="100"
+                     TextChanged="TextBox_TextChanged"
+                     x:Name="WarlockBodenSkate"/>    
         </Grid>
     </StackPanel>
 </UserControl>

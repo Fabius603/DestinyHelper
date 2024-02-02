@@ -37,7 +37,10 @@
                               x:Name="FishingToggleButton"
                               Click="Fishingrun_Click"
                               Margin="20, 0, 0, 0"
-                              FontSize="15"/>
+                              FontSize="15"
+                              Style="{StaticResource ToggleButtonTheme}"
+                              Height="30"
+                              Width="90"/>
 
             </StackPanel>
         </Grid>

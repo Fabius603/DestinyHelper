@@ -9,9 +9,13 @@ namespace DestinyHelper.Macros
 {
     public class MacroManager
     {
+        public static Dictionary<String, MacroInputs> AktiveMacros = new Dictionary<String, MacroInputs>();
+        public static Dictionary<String, GlobalHotkey> AktiveMacrosList = new Dictionary<String, GlobalHotkey>();
+        public static Dictionary<String, Key> MacroBindings = new Dictionary<String, Key>();
+
         public static void ActivateHotkey(string name)
         {
-            GlobalHotkey newHotkey = new GlobalHotkey(ModifierKeys.None, Key.V, () => MacroExecuter.Execute(name));
+            GlobalHotkey newHotkey = new GlobalHotkey(ModifierKeys.None, MacroBindings[name], () => MacroExecuter.Execute(name));
             HotkeysManager.AddHotkey(newHotkey);
             AddMacroToDictionary(name);
             AddMacroToMacroDictionary(name, newHotkey);
@@ -19,32 +23,40 @@ namespace DestinyHelper.Macros
 
         public static void DeactivateHotkey(string name)
         {
-            GlobalHotkey newHotkey = MacroExecuter.aktiveMacrosList[name];
+            GlobalHotkey newHotkey = MacroManager.AktiveMacrosList[name];
             HotkeysManager.RemoveHotkey(newHotkey);
             RemoveHotkeyFromDictionary(name);
         }
 
         static void RemoveHotkeyFromDictionary(string name)
         {
-            MacroExecuter.aktiveMacros.Remove(name);
-            MacroExecuter.aktiveMacrosList.Remove(name);
+            AktiveMacros.Remove(name);
+            AktiveMacrosList.Remove(name);
         }
 
         static void AddMacroToMacroDictionary(string name, GlobalHotkey newHotkey)
         {
-            MacroExecuter.aktiveMacrosList[name] = newHotkey;
+            AktiveMacrosList[name] = newHotkey;
         }
 
         static void AddMacroToDictionary(string name)
         {
             MacroInputs macroInputs = MacroExecuter.ReadFile(name);
-            MacroExecuter.aktiveMacros[name] = macroInputs;
+            AktiveMacros[name] = macroInputs;
         }
 
         public static string NameSubstring(string name)
         {
             name = name.Substring(0, name.Length - 12);
             return name;
+        }
+
+        public static void LoadMacros()
+        {
+            MacroBindings["HunterSkate"] = Key.V;
+            MacroBindings["HunterBodenSkate"] = Key.T;
+            MacroBindings["WarlockSkate"] = Key.V;
+            MacroBindings["WarlockBodenSkate"] = Key.T;
         }
     }
 }
